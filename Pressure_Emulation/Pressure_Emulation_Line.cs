@@ -36,13 +36,13 @@ namespace Pressure_Emulation
         {
             if (input is ITabletReport tabletReport)
             {
-                if (tabletReport.Pressure == 0) {
+                if (tabletReport.Pressure <= pressure_deadzone_percent / 100 * max_pressure_resolution) {
                     last_real_pressure = 0;
                     output_pressure_double = 0;
                     return input;
                 }
 
-                if (tabletReport.Pressure > 0 && last_real_pressure == 0) {
+                if (tabletReport.Pressure > pressure_deadzone_percent / 100 * max_pressure_resolution && last_real_pressure == 0) {
                     start_position = tabletReport.Position;
                     output_position = tabletReport.Position;
                     last_real_pressure = tabletReport.Pressure;
@@ -79,19 +79,20 @@ namespace Pressure_Emulation
         public PipelinePosition Position => PipelinePosition.PostTransform;
 
         [Property("Pressure Resolution"), ToolTip
-            ("Pressure Emulation Line:\n\n" +
-            "Pressure Resolution: The pressure resolution to emulate (must be lower than the tablet's max).")]
+            ("Pressure Resolution: The pressure resolution to emulate (must be lower than the tablet's max).")]
         public uint pressure_resolution { set; get; }
 
         [Property("Line Length"), Unit("px"), ToolTip
-            ("Pressure Emulation Line:\n\n" +
-            "Line Length: The length in pixels to draw the line.")]
+            ("Line Length: The length in pixels to draw the line.")]
         public uint line_length { set; get; }
 
         [Property("Line Offset"), Unit("px"), ToolTip
-            ("Pressure Emulation Line:\n\n" +
-            "Line Offset: The length in pixels to continue drawing after max pressure is reached.")]
+            ("Line Offset: The length in pixels to continue drawing after max pressure is reached.")]
         public uint line_offset { set; get; }
+
+        [Property("Pressure Deadzone"), Unit("%"), ToolTip
+            ("Pressure Deadzone: Adds a pressure deadzone at the set pressure percent (match this value to your Tip Threshold in the Pen Settings tab).")]
+        public float pressure_deadzone_percent { set; get; }
 
         protected uint max_pressure_resolution;
 

@@ -43,8 +43,7 @@ namespace Pressure_Emulation
         public PipelinePosition Position => PipelinePosition.PostTransform;
 
         [Property("Pressure Resolution"), ToolTip
-            ("Pressure Emulation:\n\n" +
-            "Pressure Resolution: The pressure resolution to emulate (must be lower than the tablet's max).")]
+            ("Pressure Resolution: The pressure resolution to emulate (must be lower than the tablet's max).")]
         public uint pressure_resolution { set; get; }
     
         protected uint max_pressure_resolution;

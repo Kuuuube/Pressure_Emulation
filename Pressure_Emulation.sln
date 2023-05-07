@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30626.31
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenTabletDriver.Plugin", ".modules\OpenTabletDriver\OpenTabletDriver.Plugin\OpenTabletDriver.Plugin.csproj", "{AD3F2FF5-9FC6-4B1F-8EC2-78E571AF515C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pressure_Emulation", "Pressure_Emulation\Pressure_Emulation.csproj", "{5263477D-5285-4BFF-B685-8B2720D2601D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD3F2FF5-9FC6-4B1F-8EC2-78E571AF515C}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{AD3F2FF5-9FC6-4B1F-8EC2-78E571AF515C}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{AD3F2FF5-9FC6-4B1F-8EC2-78E571AF515C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD3F2FF5-9FC6-4B1F-8EC2-78E571AF515C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5263477D-5285-4BFF-B685-8B2720D2601D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5263477D-5285-4BFF-B685-8B2720D2601D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5263477D-5285-4BFF-B685-8B2720D2601D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5263477D-5285-4BFF-B685-8B2720D2601D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F53C56A-F377-4EEF-8C3A-47D7FD8A552A}
+	EndGlobalSection
+EndGlobal

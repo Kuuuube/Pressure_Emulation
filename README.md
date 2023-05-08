@@ -19,3 +19,13 @@ Changes the tablet's pressure resolution and automatically draws a line when pre
 **Line Offset:** The length in pixels to continue drawing after max pressure is reached.
 
 **Pressure Deadzone:** Adds a pressure deadzone at the set pressure percent (match this value to your Tip Threshold in the Pen Settings tab).
+
+**Continuous Mode:** Repeats the line drawing after applying the specified offsets and divisors.
+
+**Continuous Mode X Offset:** The length in pixels to offset the line in the X axis every repeat.
+
+**Continuous Mode Y Offset:** The length in pixels to offset the line in the Y axis every repeat.
+
+**Continuous Mode Pressure Divisor:** The number to divide the pressure resolution by every repeat.
+
+**Minimum Pressure Resolution:** The minimum pressure resolution to emulate.

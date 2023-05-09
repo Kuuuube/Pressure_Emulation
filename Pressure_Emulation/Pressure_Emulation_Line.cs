@@ -33,6 +33,9 @@ namespace Pressure_Emulation
             }
 
             uint output_pressure_uint = (uint)output_pressure_double / pressure_divisor * pressure_divisor;
+            if (output_pressure_uint == 0) {
+                output_pressure_uint = (uint)(pressure_deadzone_percent / 100 * max_pressure_resolution) + 1;
+            }
             return output_pressure_uint;
         }
         public IDeviceReport Resolution(IDeviceReport input)

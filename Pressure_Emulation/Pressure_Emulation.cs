@@ -12,15 +12,16 @@ namespace Pressure_Emulation
         {
             if (input is ITabletReport tabletReport)
             {
-                if (pressure_resolution == 0) {
-                    pressure_resolution = 1;
+                if (tabletReport.Pressure == 0 || pressure_resolution == 0) {
+                    tabletReport.Pressure = 0;
+                    return input;
                 }
 
                 uint pressure_divisor = max_pressure_resolution / pressure_resolution;
                 if (pressure_divisor <= 0) {
                     pressure_divisor = 1;
                 }
-                tabletReport.Pressure = tabletReport.Pressure / pressure_divisor * pressure_divisor;
+                tabletReport.Pressure = (uint)Math.Clamp(Math.Round((double)tabletReport.Pressure / (double)pressure_divisor) * pressure_divisor, pressure_divisor, max_pressure_resolution);
             }
             return input;
         }

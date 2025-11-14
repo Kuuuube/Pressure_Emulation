@@ -24,10 +24,10 @@ namespace Pressure_Emulation
                 line_length = 1;
             }
 
-            double pressure_per_px = ((double)max_pressure_resolution / (double)line_length);
+            double pressure_per_px = (double)max_pressure_resolution / (double)line_length;
             output_pressure_double += pressure_per_px;
 
-            uint pressure_divisor = (max_pressure_resolution / emulating_pressure_resolution);
+            uint pressure_divisor = max_pressure_resolution / emulating_pressure_resolution;
             if (pressure_divisor <= 0) {
                     pressure_divisor = 1;
             }

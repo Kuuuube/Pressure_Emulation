@@ -16,7 +16,7 @@ namespace Pressure_Emulation
                     pressure_resolution = 1;
                 }
 
-                uint pressure_divisor = (max_pressure_resolution / pressure_resolution);
+                uint pressure_divisor = max_pressure_resolution / pressure_resolution;
                 if (pressure_divisor <= 0) {
                     pressure_divisor = 1;
                 }

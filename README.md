@@ -8,7 +8,7 @@ Changes the tablet's pressure resolution.
 
 **Pressure Resolution:** The pressure resolution to emulate (must be lower than the tablet's max).
 
-**Ignore Zero Level:** Start pressure emulation range at the first applicable non-zero level. This can help ensure multiple pressure lines start at the same point and avoid looking like there is a higher initial activation force when emulating small pressure ranges.
+**Ignore Zero Level:** Start pressure emulation range at the first applicable non-zero level. This can help avoid the feeling of higher initial activation force when emulating small pressure ranges.
 
 ## Pressure Emulation Line:
 

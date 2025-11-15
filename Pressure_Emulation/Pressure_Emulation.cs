@@ -21,7 +21,10 @@ namespace Pressure_Emulation
                 if (pressure_divisor <= 0) {
                     pressure_divisor = 1;
                 }
-                tabletReport.Pressure = (uint)Math.Clamp(Math.Round((double)tabletReport.Pressure / (double)pressure_divisor) * pressure_divisor, pressure_divisor, max_pressure_resolution);
+
+                uint clamp_minimum = ignore_zero_level ? pressure_divisor : 0;
+
+                tabletReport.Pressure = (uint)Math.Clamp(Math.Round((double)tabletReport.Pressure / (double)pressure_divisor) * pressure_divisor, clamp_minimum, max_pressure_resolution);
             }
             return input;
         }
@@ -47,6 +50,10 @@ namespace Pressure_Emulation
             ("Pressure Resolution: The pressure resolution to emulate (must be lower than the tablet's max).")]
         public uint pressure_resolution { set; get; }
     
+        [BooleanProperty("Ignore Zero Level", ""), DefaultPropertyValue(true), ToolTip
+            ("Ignore Zero Level: Start pressure emulation range at the first applicable non-zero level.\nThis can help ensure multiple pressure lines start at the same point and avoid looking like there is a higher initial activation force when emulating small pressure ranges.")]
+        public bool ignore_zero_level { set; get; }
+
         protected uint max_pressure_resolution;
 
         [TabletReference]

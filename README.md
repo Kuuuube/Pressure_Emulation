@@ -8,6 +8,8 @@ Changes the tablet's pressure resolution.
 
 **Pressure Resolution:** The pressure resolution to emulate (must be lower than the tablet's max).
 
+**Ignore Zero Level:** Start pressure emulation range at the first applicable non-zero level. This can help ensure multiple pressure lines start at the same point and avoid looking like there is a higher initial activation force when emulating small pressure ranges.
+
 ## Pressure Emulation Line:
 
 Changes the tablet's pressure resolution and automatically draws a line when pressure is detected.
@@ -29,3 +31,5 @@ Changes the tablet's pressure resolution and automatically draws a line when pre
 **Continuous Mode Pressure Divisor:** The number to divide the pressure resolution by every repeat.
 
 **Minimum Pressure Resolution:** The minimum pressure resolution to emulate.
+
+**Ignore Zero Level:** Start pressure emulation range at the first applicable non-zero level. This can help ensure multiple pressure lines start at the same point and avoid looking like there is a higher initial activation force when emulating small pressure ranges.

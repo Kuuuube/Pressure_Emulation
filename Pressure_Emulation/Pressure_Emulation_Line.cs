@@ -24,19 +24,18 @@ namespace Pressure_Emulation
                 line_length = 1;
             }
 
-            double pressure_per_px = (double)max_pressure_resolution / (double)line_length;
-            output_pressure_double += pressure_per_px;
-
             uint pressure_divisor = max_pressure_resolution / emulating_pressure_resolution;
             if (pressure_divisor <= 0) {
-                    pressure_divisor = 1;
+                pressure_divisor = 1;
             }
 
-            uint output_pressure_uint = (uint)output_pressure_double / pressure_divisor * pressure_divisor;
-            if (output_pressure_uint == 0) {
-                output_pressure_uint = (uint)(pressure_deadzone_percent / 100 * max_pressure_resolution) + 1;
-            }
-            return output_pressure_uint;
+            uint range_adjuster = ignore_zero_level ? pressure_divisor : 0;
+
+            double pressure_per_px = (double)(max_pressure_resolution - range_adjuster) / (double)line_length;
+            output_pressure_double += pressure_per_px;
+
+            uint output_pressure_uint = (uint)Math.Round((double)output_pressure_double / (double)pressure_divisor) * pressure_divisor + range_adjuster;
+            return Math.Clamp(output_pressure_uint, 0, max_pressure_resolution);
         }
         public IDeviceReport Resolution(IDeviceReport input)
         {
@@ -140,6 +139,10 @@ namespace Pressure_Emulation
         [Property("Minimum Pressure Resolution"), ToolTip
             ("Minimum Pressure Resolution: The minimum pressure resolution to emulate.")]
         public uint minimum_pressure_resolution { set; get; }
+
+        [BooleanProperty("Ignore Zero Level", ""), DefaultPropertyValue(true), ToolTip
+            ("Ignore Zero Level: Start pressure emulation range at the first applicable non-zero level.\nThis can help ensure multiple pressure lines start at the same point and avoid looking like there is a higher initial activation force when emulating small pressure ranges.")]
+        public bool ignore_zero_level { set; get; }
 
         protected uint max_pressure_resolution;
 

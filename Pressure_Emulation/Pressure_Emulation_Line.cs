@@ -16,7 +16,7 @@ namespace Pressure_Emulation
         private uint last_real_pressure;
         private uint emulating_pressure_resolution;
         private bool hold_report = true;
-        private uint calc_pressure_change(uint input_pressure) {
+        private uint calc_pressure_change() {
             if (emulating_pressure_resolution == 0) {
                 emulating_pressure_resolution = 1;
             }
@@ -81,7 +81,7 @@ namespace Pressure_Emulation
                     }
                 }
 
-                tabletReport.Pressure = calc_pressure_change(tabletReport.Pressure);
+                tabletReport.Pressure = calc_pressure_change();
                 output_position = new Vector2(output_position.X + 1, output_position.Y); 
                 tabletReport.Position = output_position;
             }

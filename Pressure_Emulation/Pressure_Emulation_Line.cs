@@ -41,7 +41,7 @@ namespace Pressure_Emulation
         {
             if (input is ITabletReport tabletReport)
             {
-                if (tabletReport.Pressure <= pressure_deadzone_percent / 100 * max_pressure_resolution) {
+                if (tabletReport.Pressure == 0) {
                     hold_report = true;
                     emulating_pressure_resolution = pressure_resolution;
                     last_real_pressure = 0;
@@ -49,7 +49,7 @@ namespace Pressure_Emulation
                     return input;
                 }
 
-                if (tabletReport.Pressure > pressure_deadzone_percent / 100 * max_pressure_resolution && last_real_pressure == 0) {
+                if (tabletReport.Pressure > 0 && last_real_pressure == 0) {
                     start_position = tabletReport.Position;
                     output_position = tabletReport.Position;
                     offset_position = start_position;
@@ -115,10 +115,6 @@ namespace Pressure_Emulation
         [Property("Line X Offset"), Unit("px"), ToolTip
             ("Line X Offset: The length in pixels to continue drawing after max pressure is reached.")]
         public uint line_x_offset { set; get; }
-
-        [Property("Pressure Deadzone"), Unit("%"), ToolTip
-            ("Pressure Deadzone: Adds a pressure deadzone at the set pressure percent (match this value to your Tip Threshold in the Pen Settings tab).")]
-        public float pressure_deadzone_percent { set; get; }
 
         [BooleanProperty("Continuous Mode", ""), ToolTip
             ("Continuous Mode: Repeats the line drawing after applying the specified offsets and divisors.")]
